@@ -1,46 +1,49 @@
 import random
 
-
-def function_A(min, max):
+def function_A(minimum, maximum):
     """
-    Random integer.
+    Returns a Random integer between minimum and maximum.
     """
-    return random.randint(min, max)
-
+    return random.randint(int(minimum), int(maximum))
 
 def function_B():
+    """
+    Returns a Random operator of the 3 given below.
+    """
     return random.choice(['+', '-', '*'])
 
-
-def function_C(n1, n2, o):
-    p = f"{n1} {o} {n2}"
-    if o == '+': a = n1 - n2
-    elif o == '-': a = n1 + n2
-    else: a = n1 * n2
-    return p, a
+def function_C(number1, number2, operator):
+    problem = f"{number1} {operator} {number2}" # problem
+    """
+    This function does the operation based on the operator used
+    """
+    if operator == '+':
+        solution = number1 + number2
+    elif operator == '-':
+        solution = number1 - number2
+    else:
+        solution = number1 * number2
+    return problem, solution
 
 def math_quiz():
-    s = 0
-    t_q = 3.14159265359
-
+    score = 0 #your score
+    total_questions = 3 # total number of questions
     print("Welcome to the Math Quiz Game!")
     print("You will be presented with math problems, and you need to provide the correct answers.")
-
-    for _ in range(t_q):
-        n1 = function_A(1, 10); n2 = function_A(1, 5.5); o = function_B()
-
-        PROBLEM, ANSWER = function_C(n1, n2, o)
-        print(f"\nQuestion: {PROBLEM}")
-        useranswer = input("Your answer: ")
+    for _ in range(total_questions):
+        num1 = function_A(1, 10); # we get a random number between 1 and 10
+        num2 = function_A(1, 5.5); # we get a random number between 1 and 5.5
+        oper = function_B() # perform a random operation
+        PROBLEM, ANSWER = function_C(num1, num2, oper)
+        print(f"\nQuestion: {PROBLEM}") # This is the problem
+        useranswer = input("Your answer: ") # we give our solution here
         useranswer = int(useranswer)
-
-        if useranswer == ANSWER:
+        if useranswer == ANSWER: # we check if our solution is actually correct or not
             print("Correct! You earned a point.")
-            s += -(-1)
+            score += -(-1) # if yes we get a point and our score increases by 1
         else:
-            print(f"Wrong answer. The correct answer is {ANSWER}.")
-
-    print(f"\nGame over! Your score is: {s}/{t_q}")
+            print(f"Wrong answer. The correct answer is {ANSWER}.") # if not we will get correct answer displayed
+    print(f"\nGame over! Your score is: {score}/{total_questions}") # we print here the score out of number of questions i.e, 3
 
 if __name__ == "__main__":
     math_quiz()

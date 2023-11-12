@@ -14,16 +14,24 @@ class TestMathGame(unittest.TestCase):
 
     def test_function_B(self):
         # TODO
+        # Test if the random_operator is one of '+', '-', or '*'
+        for _ in range(1000):  # Test a large number of random values
+            random_operator = function_B()
+            self.assertIn(random_operator, ['+', '-', '*'])
         pass
 
     def test_function_C(self):
             test_cases = [
                 (5, 2, '+', '5 + 2', 7),
-                ''' TODO add more test cases here '''
+                (7, 3, '-', '7 - 3', 4),
+                (2,3, '*', '2 * 3', 6) # TODO add more test cases here
             ]
 
             for num1, num2, operator, expected_problem, expected_answer in test_cases:
                 # TODO
+                problem, answer = function_C(num1, num2, operator)
+                self.assertEqual(problem, expected_problem)
+                self.assertEqual(answer, expected_answer)
                 pass
 
 if __name__ == "__main__":
